@@ -1,5 +1,8 @@
 package com.example.refactoring.chainOfResponsability;
 
-public class Maggiore {
-    private final int stipendio = 3000;
+public class Maggiore extends Handler {
+    public Maggiore() {
+        this.stipendio = 2000;
+        this.next = new Capitano();
+    }
 }
