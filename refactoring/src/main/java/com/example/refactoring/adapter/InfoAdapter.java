@@ -1,8 +1,6 @@
 package com.example.refactoring.adapter;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
 
 public class InfoAdapter implements DataSource {
     private Info info;
@@ -18,12 +16,10 @@ public class InfoAdapter implements DataSource {
 
     @Override
     public int getEta() {
-        LocalDate birthLocalDate = info.getDataDiNascita().toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
+        int birthYear = info.getDataDiNascita().getYear();
 
-        LocalDate today = LocalDate.now();
+        int todayYear = LocalDate.now().getYear();
 
-        return Period.between(birthLocalDate, today).getYears();
+        return todayYear - birthYear;
     }
 }
